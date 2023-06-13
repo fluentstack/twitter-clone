@@ -1,13 +1,13 @@
 package controllers
 
 import (
-	"media/handlers"
+	"storage/handlers"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func AddRoutes(app *fiber.App, controller *MediaController) {
-	routes := app.Group("/v1/api/media")
+	routes := app.Group("/api/media")
 
 	routes.Post("/", controller.Upload)
 }

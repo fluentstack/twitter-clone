@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"io/ioutil"
-	"media/types"
+	"storage/types"
 
 	"github.com/gofiber/fiber/v2"
 )

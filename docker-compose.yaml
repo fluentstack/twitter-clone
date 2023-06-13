@@ -1,0 +1,34 @@
+version: '3.8'
+name: twitter
+
+services:
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    command:
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+    ports:
+      - 80:80
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./logs/:/logs/
+    labels:
+      - traefik.enable=false
+      - traefik.log.level=DEBUG
+  storage:
+    container_name: storage
+    build:
+      context: ./backend/go/services/storage
+      dockerfile: Dockerfile
+    env_file:
+      - ./backend/go/services/storage/.env.local
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.storage.rule=Host(`api.localhost`) && PathPrefix(`/storage`)
+      - traefik.http.middlewares.redirectPath.replacepathregex.regex=^/storage/media(.*)
+      - traefik.http.middlewares.redirectPath.replacepathregex.replacement=/api/media$$1
+      - traefik.http.routers.storage.middlewares=redirectPath

@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"media/pkg/aws"
-	"media/types"
 	"path/filepath"
+	"storage/pkg/aws"
+	"storage/types"
 	"strconv"
 	"strings"
 	"time"

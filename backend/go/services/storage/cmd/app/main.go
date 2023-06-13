@@ -1,14 +1,24 @@
 package main
 
 import (
-	"media/controllers"
-	"media/handlers"
+	"log"
+	"storage/controllers"
+	"storage/handlers"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
 	app := fiber.New()
+
+	// Custom middleware to log incoming requests
+	app.Use(func(c *fiber.Ctx) error {
+		// Log the incoming request details
+		log.Printf("Incoming Request - Method: %s, URL: %s", c.Method(), c.OriginalURL())
+
+		// Proceed to the next middleware or route handler
+		return c.Next()
+	})
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World 👋!")
@@ -25,5 +35,5 @@ func main() {
 	mediaController := controllers.NewMediaController(mediaHandler)
 	controllers.AddRoutes(app, mediaController)
 
-	app.Listen(":3000")
+	app.Listen(":80")
 }
