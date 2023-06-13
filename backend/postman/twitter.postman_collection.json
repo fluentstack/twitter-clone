@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "74195b1f-4677-4271-87a7-18ba2ed24a93",
+		"name": "twitter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9964323"
+	},
+	"item": [
+		{
+			"name": "storage",
+			"item": [
+				{
+					"name": "media",
+					"item": [
+						{
+							"name": "upload",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/iammu/Downloads/Deploy Blazor WebAssembly to AWS Amplify.png"
+										},
+										{
+											"key": "mediaType",
+											"value": "0",
+											"type": "text"
+										},
+										{
+											"key": "fileName",
+											"value": "blazor",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/api/media",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"api",
+										"media"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

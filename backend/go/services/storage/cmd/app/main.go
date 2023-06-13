@@ -9,21 +9,14 @@ import (
 )
 
 func main() {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		DisableStartupMessage: true,
+	})
 
-	// Custom middleware to log incoming requests
 	app.Use(func(c *fiber.Ctx) error {
-		// Log the incoming request details
 		log.Printf("Incoming Request - Method: %s, URL: %s", c.Method(), c.OriginalURL())
-
-		// Proceed to the next middleware or route handler
 		return c.Next()
 	})
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World 👋!")
-	})
-
 	// api.media.localhost.com/v1/media?type=avatar GET
 	// api.media.localhost.com/v1/media POST
 	// api.media.localhost.com/v1/media/{media_id} GET

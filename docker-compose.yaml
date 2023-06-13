@@ -24,6 +24,7 @@ services:
     build:
       context: ./backend/go/services/storage
       dockerfile: Dockerfile
+    image: twitter/storage:latest
     env_file:
       - ./backend/go/services/storage/.env.local
     labels:
