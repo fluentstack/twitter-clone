@@ -1,0 +1,3 @@
+{
+    "dotnet.defaultSolution": "backend\\dotnet\\Twitter.sln"
+}

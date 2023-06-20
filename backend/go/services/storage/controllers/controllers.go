@@ -7,7 +7,7 @@ import (
 )
 
 func AddRoutes(app *fiber.App, controller *MediaController) {
-	routes := app.Group("/api/media")
+	routes := app.Group("/media")
 	
 	routes.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World 👋!")

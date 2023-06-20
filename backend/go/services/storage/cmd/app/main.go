@@ -9,9 +9,7 @@ import (
 )
 
 func main() {
-	app := fiber.New(fiber.Config{
-		DisableStartupMessage: true,
-	})
+	app := fiber.New()
 
 	app.Use(func(c *fiber.Ctx) error {
 		log.Printf("Incoming Request - Method: %s, URL: %s", c.Method(), c.OriginalURL())

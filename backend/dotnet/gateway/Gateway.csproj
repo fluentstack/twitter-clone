@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>Twitter.Gateway</RootNamespace>
+    <AssemblyName>Twitter.Gateway</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d2ec1bbc-139a-4d81-a2b7-4dfcaa5145ce</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.18.1" />
+        <PackageReference Include="Yarp.ReverseProxy" Version="2.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\framework\Core\FSH.Framework.Core.csproj" />
+      <ProjectReference Include="..\framework\Infrastructure\FSH.Framework.Infrastructure.csproj" />
+    </ItemGroup>
+</Project>
